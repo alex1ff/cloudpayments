@@ -70,19 +70,15 @@ class _BlocCommandsListenerState<B extends ExtendedBloc> extends State<BlocComma
   }
 
   void _subscribe() {
-    if (_bloc != null) {
-      _bloc.commandsStream.listen(
-        (command) {
-          widget.listener(context, command);
-        },
-      );
+    _bloc.commandsStream.listen(
+      (command) {
+        widget.listener(context, command);
+      },
+    );
     }
-  }
 
   void _unsubscribe() {
-    if (_subscription != null) {
-      _subscription.cancel();
-      _subscription = null;
+    _subscription.cancel();
+    _subscription = null;
     }
-  }
 }
